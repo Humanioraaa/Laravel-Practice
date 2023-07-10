@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\TableData;
-use App\Http\Controllers\Data;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +21,5 @@ Route::get('/', function () {
 
 
 
-Route::get('/table', [Data::class, 'showing']);
+Route::get('/table', [DataController::class, 'showing'])->name('table');
+
