@@ -10,7 +10,7 @@
           <span class="bar-bottom"></span>
         </div>
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="form__group field">
             <input
@@ -59,6 +59,17 @@
             />
             <label for="harga" class="form__label">Harga</label>
         </div>
+        <div class="form__group field">
+            <input
+              type="file"
+              class="form__field"
+              placeholder="image"
+              name="image"
+              id="image"
+              required
+            />
+            <label for="img" class="form__label">File</label>
+          </div>
         <button class="offset" type="submit">Submit</button>
         </form>
 

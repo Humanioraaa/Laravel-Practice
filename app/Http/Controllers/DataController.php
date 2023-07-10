@@ -30,6 +30,14 @@ class DataController extends Controller
 
     public function store(Request $request)
     {
+        $newName = '';
+        if($request->file('image')) {
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->jenis_barang.'-'.now()->timestamp.'.'.$extension;
+            $request->file('image')->storeAs('img', $newName);
+        }
+        $request['img'] = $newName;
+
         $barang = Data::create($request->all());
 
         return redirect('/form');
@@ -52,6 +60,7 @@ class DataController extends Controller
 
 
     public function updated($id, Request $request){
+
         $data=Data::find($id);
         $data-> id = $request->input('id');
         $data-> nama = $request->input('nama');

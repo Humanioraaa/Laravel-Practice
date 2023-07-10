@@ -30,6 +30,7 @@
                 <th>Function</th>
                 <th>Price</th>
                 <th>Size</th>
+                <th>Images</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -41,6 +42,7 @@
                 <td>{{ $show->fungsi }}</td>
                 <td>{{ $show->harga }}</td>
                 <td>{{ $show->size }}</td>
+                <td><img src="{{ asset('storage/img/' . $show->gambar) }}" alt="Gambar" width="120px" hight="120px"></td>
                 <td><a href="{{ route('update', $show->id) }}">Click Here</a></td>
                 <td>
                     <form id="delete-form-{{ $show->id }}" action="{{ route('data.destroy', $show->id) }}" method="POST" style="display: none;">

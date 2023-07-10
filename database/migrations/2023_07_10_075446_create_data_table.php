@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('fungsi');
             $table->string('harga');
             $table->string('size');
+            $table->string('img');
 
             $table->timestamps();
         });
