@@ -21,5 +21,21 @@ Route::get('/', function () {
 
 
 
+
 Route::get('/table', [DataController::class, 'showing'])->name('table');
 
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+
+// Rute untuk Upload Data
+Route::get('/form', [DataController::class, 'add']);
+Route::post('/form', [DataController::class, 'store']);
+
+Route::delete('/table/{id}', [DataController::class, 'destroy'])->name('data.destroy');
+
+
+Route::get('/form-update/{id}', [DataController::class, 'update'])->name('update');
+Route::post('/form-update/{id}', [DataController::class, 'updated'])->name('updated');

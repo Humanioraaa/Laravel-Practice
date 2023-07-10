@@ -41,11 +41,17 @@
                 <td>{{ $show->fungsi }}</td>
                 <td>{{ $show->harga }}</td>
                 <td>{{ $show->size }}</td>
-                <td><a href="">Test</a></td>
-                <td><a href="">Test</a></td>
+                <td><a href="{{ route('update', $show->id) }}">Click Here</a></td>
+                <td>
+                    <form id="delete-form-{{ $show->id }}" action="{{ route('data.destroy', $show->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    <a href="#" onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this data?')) { document.getElementById('delete-form-{{ $show->id }}').submit(); }">Click Here</a>
+                </td>
             </tr>
             @endforeach
-          </tbody>
+        </tbody>
         </table>
       </div>
     </section>
