@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('id_roles');
+
+            $table->foreign('id_roles')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });
     }
