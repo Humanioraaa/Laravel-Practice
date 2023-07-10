@@ -2,6 +2,7 @@
 
 use App\Models\TableData;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DataController;
 
 /*
@@ -19,10 +20,20 @@ Route::get('/', function () {
     return view('landing');
 });
 
+// Login
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'store']);
 
 
 
-Route::get('/table', [DataController::class, 'showing'])->name('table');
+
+Route::middleware(['auth', 'useronly'])->group(function () {
+    Route::get('/table', [DataController::class, 'showing'])->name('table');
 
 
 Route::get('/form', function () {
@@ -39,3 +50,4 @@ Route::delete('/table/{id}', [DataController::class, 'destroy'])->name('data.des
 
 Route::get('/form-update/{id}', [DataController::class, 'update'])->name('update');
 Route::post('/form-update/{id}', [DataController::class, 'updated'])->name('updated');
+});
