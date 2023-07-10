@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\TableData;
+use App\Http\Controllers\Data;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
+
+
+
+Route::get('/table', [Data::class, 'showing']);
