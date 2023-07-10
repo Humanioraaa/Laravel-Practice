@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('fungsi');
             $table->string('harga');
-            $table->integer('size');
+            $table->string('size');
 
             $table->timestamps();
         });
