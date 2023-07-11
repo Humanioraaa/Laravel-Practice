@@ -11,7 +11,7 @@ class UserMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->id_role !=2) {
+        if(Auth::user()->id_roles !=2) {
             return redirect('login');
         }
         return $next($request);

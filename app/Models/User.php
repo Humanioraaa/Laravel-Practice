@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Data;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -49,9 +50,14 @@ class User extends Authenticatable
         'id_roles' => 2
     ];
 
+    public function data()
+    {
+        return $this->hasMany(Data::class);
+    }
+
 
     public function role()
     {
-        return $this->belongsTo(Roles::class, 'id_role');
+        return $this->belongsTo(Roles::class, 'id_roles');
     }
 }

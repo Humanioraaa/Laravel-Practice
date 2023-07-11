@@ -12,5 +12,5 @@ class Data extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = ['nama',
-    'fungsi', 'harga', 'size', 'img'];
+    'fungsi', 'harga', 'size', 'img', 'id_users'];
 }

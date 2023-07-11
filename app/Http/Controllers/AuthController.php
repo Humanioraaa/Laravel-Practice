@@ -29,15 +29,18 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // Autentikasi berhasil
-            return redirect()->intended('/');
-        } else {
-            // Autentikasi gagal
-            return redirect()->back()->withErrors([
-                'email' => 'Email atau password salah',
-            ])->withInput();
+             //Role1
+             if (Auth::user()->id_roles == 1) {
+                return redirect('/');
+            }
+            //Role2
+            if (Auth::user()->id_roles == 2) {
+                return redirect('/');
+            }
         }
 
+         //error
+         return back()->with('error', 'Error Email or Password');
     }
 
     public function register()

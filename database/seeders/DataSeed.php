@@ -13,10 +13,11 @@ class DataSeed extends Seeder
      */
     public function run(): void
     {
-
-    Data::factory()
-    ->count(10)
-    ->create();
-
-}
+        DB::table('users')->insert([
+            'name' => 'jemek',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('password'),
+            'id_roles' => '1',
+        ]);
+    }
 }

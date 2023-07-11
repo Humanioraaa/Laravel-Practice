@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('harga');
             $table->string('size');
             $table->string('img');
+            $table->unsignedBigInteger('id_users');
+
+            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

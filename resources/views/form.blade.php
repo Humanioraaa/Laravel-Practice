@@ -12,6 +12,8 @@
 
         <form action="" method="POST" enctype="multipart/form-data">
             @csrf
+
+            <input type="hidden" id="id_users" value="{{ auth()->id() }}" name="id_users">
         <div class="form__group field">
             <input
               type="input"

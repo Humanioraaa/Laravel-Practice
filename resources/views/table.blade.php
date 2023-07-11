@@ -42,14 +42,24 @@
                 <td>{{ $show->fungsi }}</td>
                 <td>{{ $show->harga }}</td>
                 <td>{{ $show->size }}</td>
-                <td><img src="{{ asset('storage/img/' . $show->gambar) }}" alt="Gambar" width="120px" hight="120px"></td>
-                <td><a href="{{ route('update', $show->id) }}">Click Here</a></td>
+                <td><img src="{{ asset('storage/img/' . $show->img) }}" alt="Gambar" width="120px" hight="120px"></td>
                 <td>
+                    @can('update-data', $show)
+                    <a href="{{ route('update', $show->id) }}">Click Here</a>
+                    @endcan
+                </td>
+                <td>
+
                     <form id="delete-form-{{ $show->id }}" action="{{ route('data.destroy', $show->id) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
                     </form>
-                    <a href="#" onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this data?')) { document.getElementById('delete-form-{{ $show->id }}').submit(); }">Click Here</a>
+                    @auth
+                    @can('delete-data', $show)
+                        <a href="#" onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this data?')) { document.getElementById('delete-form-{{ $show->id }}').submit(); }">Click Here</a>
+                    @endcan
+                @endauth
+
                 </td>
             </tr>
             @endforeach
